@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Zisato\Projection\ValueObject;
 
-class ProjectionModelCollection
+final class ProjectionModelCollection
 {
-    private int $total;
+    private readonly int $total;
 
     /**
      * @var array<ProjectionModel>
      */
-    private array $data;
+    private array $data = [];
 
     private int $count;
 
@@ -27,13 +27,13 @@ class ProjectionModelCollection
      */
     public static function create(int $total, array $values = []): self
     {
-        return new static($total, ...$values);
+        return new self($total, ...$values);
     }
 
     public function add(ProjectionModel $value): void
     {
         $this->data[] = $value;
-        $this->count++;
+        ++$this->count;
     }
 
     /**

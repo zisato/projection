@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Zisato\Projection\OrderBy;
 
-class OrderByItem
+final class OrderByItem
 {
-    private string $column;
+    private readonly string $column;
 
-    private Direction $direction;
+    private readonly Direction $direction;
 
     public function __construct(string $column, Direction $direction)
     {

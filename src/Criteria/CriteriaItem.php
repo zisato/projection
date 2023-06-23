@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Zisato\Projection\Criteria;
 
-class CriteriaItem
+final class CriteriaItem
 {
-    protected string $column;
+    private readonly string $column;
 
     /**
      * @var mixed
      */
-    protected $value;
+    private $value;
 
-    protected Condition $condition;
+    private readonly Condition $condition;
 
     /**
      * @param mixed $value

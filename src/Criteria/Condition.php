@@ -4,28 +4,61 @@ declare(strict_types=1);
 
 namespace Zisato\Projection\Criteria;
 
-class Condition
+final class Condition
 {
+    /**
+     * @var string
+     */
     public const CONDITION_EQUALS = 'eq';
 
+    /**
+     * @var string
+     */
     public const CONDITION_GREATER = 'gt';
 
+    /**
+     * @var string
+     */
     public const CONDITION_GREATER_EQUALS = 'gte';
 
+    /**
+     * @var string
+     */
     public const CONDITION_IN = 'in';
 
+    /**
+     * @var string
+     */
     public const CONDITION_LIKE = 'like';
 
+    /**
+     * @var string
+     */
     public const CONDITION_LOWER = 'lt';
 
+    /**
+     * @var string
+     */
     public const CONDITION_LOWER_EQUALS = 'lte';
 
+    /**
+     * @var string
+     */
     public const CONDITION_NOT_EQUALS = 'neq';
 
+    /**
+     * @var string
+     */
     public const CONDITION_NOT_IN = 'nin';
 
+    /**
+     * @var string
+     */
     public const CONDITION_NOT_LIKE = 'nlike';
 
+    /**
+     * @var string[]
+     */
     private const VALID_VALUES = [
         self::CONDITION_EQUALS,
         self::CONDITION_GREATER,
@@ -39,7 +72,7 @@ class Condition
         self::CONDITION_NOT_LIKE,
     ];
 
-    private string $value;
+    private readonly string $value;
 
     public function __construct(string $value)
     {
@@ -50,52 +83,52 @@ class Condition
 
     public static function eq(): self
     {
-        return new static(self::CONDITION_EQUALS);
+        return new self(static::CONDITION_EQUALS);
     }
 
     public static function gt(): self
     {
-        return new static(self::CONDITION_GREATER);
+        return new self(static::CONDITION_GREATER);
     }
 
     public static function gte(): self
     {
-        return new static(self::CONDITION_GREATER_EQUALS);
+        return new self(static::CONDITION_GREATER_EQUALS);
     }
 
     public static function in(): self
     {
-        return new static(self::CONDITION_IN);
+        return new self(static::CONDITION_IN);
     }
 
     public static function like(): self
     {
-        return new static(self::CONDITION_LIKE);
+        return new self(static::CONDITION_LIKE);
     }
 
     public static function lt(): self
     {
-        return new static(self::CONDITION_LOWER);
+        return new self(static::CONDITION_LOWER);
     }
 
     public static function lte(): self
     {
-        return new static(self::CONDITION_LOWER_EQUALS);
+        return new self(static::CONDITION_LOWER_EQUALS);
     }
 
     public static function notEq(): self
     {
-        return new static(self::CONDITION_NOT_EQUALS);
+        return new self(static::CONDITION_NOT_EQUALS);
     }
 
     public static function notIn(): self
     {
-        return new static(self::CONDITION_NOT_IN);
+        return new self(static::CONDITION_NOT_IN);
     }
 
     public static function notLike(): self
     {
-        return new static(self::CONDITION_NOT_LIKE);
+        return new self(static::CONDITION_NOT_LIKE);
     }
 
     public function value(): string

@@ -9,7 +9,7 @@ abstract class ProjectionModel
     /**
      * @var array<mixed, mixed>
      */
-    private array $data;
+    private array $data = [];
 
     /**
      * @param array<mixed, mixed> $data

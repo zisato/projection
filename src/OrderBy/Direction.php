@@ -4,15 +4,24 @@ declare(strict_types=1);
 
 namespace Zisato\Projection\OrderBy;
 
-class Direction
+final class Direction
 {
+    /**
+     * @var string
+     */
     public const DIRECTION_ASC = 'asc';
 
+    /**
+     * @var string
+     */
     public const DIRECTION_DESC = 'desc';
 
+    /**
+     * @var string[]
+     */
     private const VALID_VALUES = [self::DIRECTION_ASC, self::DIRECTION_DESC];
 
-    private string $value;
+    private readonly string $value;
 
     public function __construct(string $value)
     {
@@ -23,12 +32,12 @@ class Direction
 
     public static function asc(): self
     {
-        return new static(self::DIRECTION_ASC);
+        return new self(static::DIRECTION_ASC);
     }
 
     public static function desc(): self
     {
-        return new static(self::DIRECTION_DESC);
+        return new self(static::DIRECTION_DESC);
     }
 
     public function value(): string

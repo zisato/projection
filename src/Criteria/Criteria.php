@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Zisato\Projection\Criteria;
 
-class Criteria
+final class Criteria
 {
     /**
      * @var array<CriteriaItem>
      */
-    protected array $values;
+    private array $values = [];
 
     public function __construct(CriteriaItem ...$values)
     {
@@ -21,16 +21,15 @@ class Criteria
      */
     public static function fromArray(array $values = []): self
     {
-        return new static(...$values);
+        return new self(...$values);
     }
 
     /**
-     * @param string $condition
      * @param mixed $value
      */
     public function add(string $column, $value, ?Condition $condition = null): void
     {
-        if ($condition === null) {
+        if (!$condition instanceof Condition) {
             $condition = Condition::eq();
         }
 

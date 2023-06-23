@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Zisato\Projection\OrderBy;
 
-class OrderBy
+final class OrderBy
 {
     /**
      * @var array<OrderByItem>
      */
-    protected array $values;
+    private array $values = [];
 
     public function __construct(OrderByItem ...$values)
     {
@@ -21,12 +21,12 @@ class OrderBy
      */
     public static function fromArray(array $values = []): self
     {
-        return new static(...$values);
+        return new self(...$values);
     }
 
     public function add(string $column, ?Direction $direction = null): void
     {
-        if ($direction === null) {
+        if (!$direction instanceof Direction) {
             $direction = Direction::asc();
         }
 
